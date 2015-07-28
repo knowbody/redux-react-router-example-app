@@ -1,0 +1,34 @@
+{
+  "name": "react-redux-boilerplate",
+  "version": "0.0.1",
+  "description": "React Redux Boilerplate",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "NODE_ENV=test mocha --compilers js:babel/register --recursive",
+    "test:watch": "NODE_ENV=test mocha --compilers js:babel/register --recursive --watch",
+    "test:cov": "babel-node ./node_modules/.bin/isparta cover ./node_modules/.bin/_mocha -- --recursive"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "classnames": "^2.1.2",
+    "react": "^0.13.3",
+    "react-redux": "^0.2.1",
+    "redux": "^1.0.0-rc"
+  },
+  "devDependencies": {
+    "babel": "^5.8.12",
+    "babel-core": "^5.6.18",
+    "babel-loader": "^5.1.4",
+    "expect": "^1.8.0",
+    "isparta": "^3.0.3",
+    "mocha": "^2.2.5",
+    "node-libs-browser": "^0.5.2",
+    "raw-loader": "^0.5.1",
+    "react-hot-loader": "^1.2.7",
+    "style-loader": "^0.12.3",
+    "todomvc-app-css": "^2.0.1",
+    "webpack": "^1.9.11",
+    "webpack-dev-server": "^1.9.0"
+  }
+}
