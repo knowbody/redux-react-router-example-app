@@ -6,11 +6,11 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    './index'
+    './src/javascript/index'
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
+    path: path.join(__dirname, 'dist'),
     publicPath: '/static/'
   },
   plugins: [
@@ -28,15 +28,19 @@ module.exports = {
       test: /\.js$/,
       loaders: ['react-hot', 'babel'],
       exclude: /node_modules/,
-      include: __dirname
+      include: path.join(__dirname, 'src', 'javascript')
     }, {
       test: /\.js$/,
       loaders: ['babel'],
       include: path.join(__dirname, '..', '..', 'src')
     }, {
-      test: /\.css?$/,
+      test: /\.css$/,
       loaders: ['style', 'raw'],
       include: __dirname
+    }, {
+      test: /\.png$/,
+      loader: "url-loader?mimetype=image/png",
+      include: path.join(__dirname, 'src', 'images')
     }]
   }
 };
