@@ -1,35 +1,39 @@
-import React, { PropTypes } from 'react';
-import Header from './Header';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import Blogpost from './Blogpost';
-import Footer from './Footer';
+import { removePost } from '../actions/BlogActions';
 
-export default class Main {
-  static propTypes = {
-    blogposts: PropTypes.array.isRequired,
-    actions: PropTypes.object.isRequired
+function select(state) {
+  return {
+    blogposts: state.blogposts
+  };
+}
+
+class Main extends Component {
+  constructor() {
+    super();
+
+    this.handleRemove = this.handleRemove.bind(this);
+  }
+
+  handleRemove(id) {
+    const { dispatch } = this.props;
+    dispatch(removePost(id));
   }
 
   render() {
     let { blogposts } = this.props;
 
     blogposts = blogposts.map((post, i) =>
-      <Blogpost key={i} post={post} index={i} />
+      <Blogpost key={i} post={post} index={i} remove={this.handleRemove} />
     );
 
     return (
-      <div style={styles.main}>
-        <Header />
-        <div>
-          {blogposts}
-        </div>
-        <Footer />
+      <div>
+        {blogposts}
       </div>
     );
   }
 }
 
-let styles = {
-  main: {
-    fontFamily: 'Lato'
-  }
-}
+export default connect(select)(Main);
