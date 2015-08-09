@@ -1,9 +1,20 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 
-export default class Blogpost {
+export default class Blogpost extends Component {
   static propTypes = {
     post: PropTypes.object.isRequired,
-    index: PropTypes.number.isRequired
+    index: PropTypes.number.isRequired,
+    remove: PropTypes.func
+  }
+
+  constructor() {
+    super();
+
+    this.handleRemove = this.handleRemove.bind(this);
+  }
+
+  handleRemove() {
+    this.props.remove(this.props.post.id);
   }
 
   render() {
@@ -14,6 +25,7 @@ export default class Blogpost {
         <h2>{post.title}</h2>
         <h5>{post.intro}</h5>
         <p>{post.body}</p>
+        <button onClick={this.handleRemove}>Remove</button>
       </div>
     );
   }

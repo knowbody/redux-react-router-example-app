@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 
 export default class Header {
+  static propTypes = {
+    location: PropTypes.object.isRequired
+  }
+
   render() {
+    let newPost = null;
+    if (this.props.location.pathname === '/new') {
+      newPost = <Link to='/' style={styles.link}>view all posts</Link>;
+    } else {
+      newPost = <Link to='/new' style={styles.link}>add new post</Link>;
+    }
+
     return (
       <div style={styles.layout}>
-        <h1 style={styles.h1}>Redux and React Router Example App</h1>
+        <Link to='/' style={styles.h1}>Redux and React Router Example App</Link>
+        {newPost}
       </div>
     );
   }
@@ -18,7 +31,18 @@ let styles = {
   },
 
   h1: {
+    fontSize: '34px',
+    textDecoration: 'none',
+    color: 'white',
     paddingTop: '20px',
-    paddingLeft: '40px'
+    paddingLeft: '40px',
+    display: 'inline-block'
+  },
+
+  link: {
+    paddingTop: '30px',
+    paddingRight: '40px',
+    display: 'inline-block',
+    float: 'right'
   }
 }
