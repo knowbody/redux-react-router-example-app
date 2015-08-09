@@ -4,6 +4,8 @@ import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux'
 import * as reducers from './reducers';
 import BlogApp from './containers/BlogApp';
+import Main from './components/Main';
+import AddPost from './components/AddPost';
 
 const reducer = combineReducers(reducers);
 const store = createStore(reducer);
@@ -14,20 +16,19 @@ export default class Root extends Component {
   }
 
   render () {
-    const { history } = this.props
+    const { history } = this.props;
+
     return (
       <Provider store={store}>
-        {renderRoutes.bind(null, history)}
+        {() =>
+          <Router history={history}>
+            <Route component={BlogApp}>
+              <Route path='/' component={Main} />
+              <Route path='new' component={AddPost} />
+            </Route>
+          </Router>
+        }
       </Provider>
     )
   }
-}
-
-function renderRoutes(history) {
-  return (
-    <Router history={history}>
-      <Route component={BlogApp} path='/'>
-      </Route>
-    </Router>
-  )
 }

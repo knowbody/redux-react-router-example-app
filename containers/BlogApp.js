@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { Connector } from 'react-redux';
-import Main from '../components/Main';
-import * as BlogActions from '../actions/BlogActions';
-
+import React, { Component, PropTypes } from 'react';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default class BlogApp extends Component {
-  render() {
-    return (
-      <Connector select={state => ({ blogposts: state.blogposts })}>
-        {this.renderChild}
-      </Connector>
-    );
+  static propTypes = {
+    children: PropTypes.object.isRequired
   }
 
-  renderChild({ blogposts, dispatch }) {
-    const actions = bindActionCreators(BlogActions, dispatch);
+  render() {
     return (
-      <div>
-        <Main blogposts={blogposts} actions={actions} />
+      <div style={styles.layout}>
+        <Header location={this.props.location}/>
+        {this.props.children}
+        <Footer />
       </div>
     );
+  }
+}
+
+let styles = {
+  layout: {
+    fontFamily: 'Lato'
   }
 }

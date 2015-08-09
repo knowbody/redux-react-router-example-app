@@ -13,9 +13,9 @@
   "dependencies": {
     "classnames": "^2.1.2",
     "react": "^0.13.3",
-    "react-redux": "^0.2.1",
+    "react-redux": "^0.6.0",
     "redux": "^1.0.0-rc",
-    "react-router": "1.0.0-beta2"
+    "react-router": "1.0.0-beta3"
   },
   "devDependencies": {
     "babel": "^5.8.12",
