@@ -2,15 +2,25 @@
   "name": "redux-blogapp",
   "version": "0.0.1",
   "description": "Redux and React Router Blogapp example",
+  "author": "Mateusz Zatorski <mateuszzatorski@gmail.com> (https://github.com/knowbody)",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "lint": "`npm bin`/eslint src/javascript",
+    "deploy": "npm install && `npm bin`/webpack --config webpack.config.production.js",
     "test": "NODE_ENV=test mocha --compilers js:babel/register --recursive",
     "test:watch": "NODE_ENV=test mocha --compilers js:babel/register --recursive --watch",
     "test:cov": "babel-node ./node_modules/.bin/isparta cover ./node_modules/.bin/_mocha -- --recursive"
   },
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/knowbody/redux-react-router-example-app/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/knowbody/redux-react-router-example-app.git"
+  },
+  "homepage": "https://github.com/knowbody/redux-react-router-example-app",
   "dependencies": {
     "classnames": "^2.1.2",
     "material-ui": "^0.10.2",
