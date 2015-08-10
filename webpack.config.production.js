@@ -3,31 +3,30 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  devtool: 'eval',
-  entry: [
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
-    './src/javascript/index'
-  ],
+  devtool: 'source-map',
+  entry: './src/javascript/index',
   output: {
-    filename: 'bundle.js',
-    path: path.join(__dirname, 'dist'),
-    publicPath: '/static/'
+    path: path.join(__dirname, 'static'),
+    filename: 'bundle.js'
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ],
   resolve: {
     alias: {
       'redux': path.join(__dirname, 'node_modules/redux')
     },
-    extensions: ['', '.js']
+    extensions: [ '', '.js' ]
   },
+  plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false
+      }
+    })
+  ],
   module: {
     loaders: [{
       test: /\.js$/,
-      loaders: ['react-hot', 'babel'],
+      loaders: ['babel'],
       exclude: /node_modules/,
       include: path.join(__dirname, 'src', 'javascript')
     }, {

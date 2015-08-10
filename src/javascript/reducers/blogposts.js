@@ -1,5 +1,8 @@
 import { ADD_POST, REMOVE_POST } from '../constants/ActionTypes';
 
+const randGender = ['men', 'women'][Math.floor(Math.random() * 2)];
+const baseUrl = 'https://randomuser.me/api/portraits/med/';
+
 const initialState = [{
   id: 0,
   title: 'Blogs are awesome',
@@ -9,7 +12,7 @@ const initialState = [{
   user: {
     id: 0,
     username: 'Murphy',
-    avatar: `http://thecatapi.com/api/images/get?type=gif&r='${Math.random()}`
+    avatar: `${baseUrl}${randGender}/${Math.floor(Math.random() * 100) + 1}.jpg`
   }
 }, {
   id: 1,
@@ -19,7 +22,7 @@ const initialState = [{
   user: {
     id: 1,
     username: 'Law',
-    avatar: `http://thecatapi.com/api/images/get?type=gif&r='${Math.random()}`
+    avatar: `${baseUrl}${randGender}/${Math.floor(Math.random() * 100) + 1}.jpg`
   }
 }, {
   id: 2,
@@ -30,7 +33,7 @@ const initialState = [{
   user: {
     id: 2,
     username: 'Joda',
-    avatar: `http://thecatapi.com/api/images/get?type=gif&r='${Math.random()}`
+    avatar: `${baseUrl}${randGender}/${Math.floor(Math.random() * 100) + 1}.jpg`
   }
 }];
 
