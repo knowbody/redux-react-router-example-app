@@ -1,12 +1,17 @@
 import React, { Component, PropTypes } from 'react'
+import { Redirect, Router, Route } from 'react-router'
 import { Provider } from 'react-redux'
-import routes from './config/routes'
 import { store } from './redux'
 import mui from 'material-ui'
 import theme from './config/theme'
 
 const ThemeManager = new mui.Styles.ThemeManager();
 ThemeManager.setTheme(theme);
+
+// Views
+import Blog from '../views/Blog';
+import Draft from '../views/Draft';
+import Login from '../views/Login';
 
 export default class Root extends Component {
   /*
@@ -40,7 +45,13 @@ export default class Root extends Component {
 
     return (
         <Provider store={store}>
-          {routes.bind(null, history)}
+          {() =>
+            <Router history={history}>
+              <Route path='/' component={Blog} />
+              <Route path='/post/new' component={Draft} />
+              <Route path='/login' component={Login} />
+            </Router>
+          }
         </Provider>
     )
   }
