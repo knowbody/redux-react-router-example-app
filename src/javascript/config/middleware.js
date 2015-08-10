@@ -1,5 +1,10 @@
 import thunk from 'redux-thunk'
 
+/**
+ * Logs previous and current state for every action call
+ * @param getState
+ * @returns {Function}
+ */
 function logger({ getState }) {
   return (next) => (action) => {
     console.log('Dispatching: ', action);
