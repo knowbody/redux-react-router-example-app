@@ -1,30 +1,41 @@
 import React, { Component, PropTypes } from 'react'
-import { Avatar ,Card, CardHeader, CardMedia, CardTitle, CardText, IconMenu, MenuItem, IconButton } from 'material-ui'
+import { Avatar ,Card, CardHeader, CardMedia, CardTitle, CardText, IconButton } from 'material-ui'
+import IconMenu from 'material-ui/lib/menus/icon-menu'
+import MenuItem from 'material-ui/lib/menus/menu-item'
 import NavigationMoreVert from 'material-ui/lib/svg-icons/navigation/more-vert'
 import ActionDelete from 'material-ui/lib/svg-icons/action/delete'
 import SocialShare from 'material-ui/lib/svg-icons/social/share'
-import Row from 'react-bootstrap/lib/Row'
-import Col from 'react-bootstrap/lib/Col'
 
 export default class Blogpost extends Component {
+  static contextTypes = {
+    muiTheme: React.PropTypes.object
+  }
+
   static propTypes = {
-    post: PropTypes.object.isRequired,
+    actions: PropTypes.shape({
+      removePost: PropTypes.func
+    }).isRequired,
     index: PropTypes.number.isRequired,
-    onRemove: PropTypes.func.isRequired
+    post: PropTypes.object.isRequired
   }
 
   getStyles() {
     return {
-      row: {
-        margin: '20px 0'
+      card: {
+        position: 'relative',
+        marginTop: 10,
+        marginBottom: 20
       },
       iconMenu: {
         position: 'absolute',
+        top: 12,
         right: 16,
         zIndex: 1000
       },
       cardMedia: {
-        background: 'black'
+        marginTop: 20,
+        background: 'black',
+        minHeight: 100
       },
       cardMediaStyle: {
         maxHeight: '500px',
@@ -38,10 +49,10 @@ export default class Blogpost extends Component {
   }
 
   render() {
-    const { index, post } = this.props;
+    const { actions, index, post } = this.props;
     const styles = this.getStyles();
 
-    let title = <CardHeader title={post.title} subtitle={post.subtitle} avatar={post.avatar}/>;
+    let title = <CardTitle title={post.title} subtitle={post.subtitle}/>;
 
     if (post.poster) {
       title = (
@@ -54,18 +65,17 @@ export default class Blogpost extends Component {
     }
 
     return (
-        <Row style={styles.row} ref={index}>
-          <Col xs={12}>
-            <Card>
-              {title}
-              <IconMenu style={styles.iconMenu} iconButtonElement={<IconButton><NavigationMoreVert /></IconButton>}>
-                <MenuItem index={0}>Remove</MenuItem>
-                <MenuItem index={1}>Share</MenuItem>
-              </IconMenu>
-              <CardText>{post.body}</CardText>
-            </Card>
-          </Col>
-        </Row>
+        <Card style={styles.card}>
+          <CardHeader title={post.user.username} avatar={post.user.avatar}>
+            <IconMenu style={styles.iconMenu} iconButtonElement={<IconButton><NavigationMoreVert /></IconButton>}>
+              <MenuItem leftIcon={<ActionDelete />} primaryText="Remove"
+                        onTouchTap={actions.removePost.bind(null, post.id)}/>
+              <MenuItem leftIcon={<SocialShare />} primaryText="Share"/>
+            </IconMenu>
+          </CardHeader>
+          {title}
+          { post.body ? <CardText>{post.body}</CardText> : '' }
+        </Card>
     );
   }
 }

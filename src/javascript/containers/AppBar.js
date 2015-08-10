@@ -3,21 +3,32 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import Grid from 'react-bootstrap/lib/Grid'
 
 class AppBar extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired
   }
 
+  getStyles() {
+    return {
+      main: {
+        maxWidth: 950,
+        margin: '0 auto',
+        paddingTop: 10
+      }
+    }
+  }
+
   render() {
+    const styles = this.getStyles();
+
     return (
         <div>
           <Header />
-          <Grid style={{ maxWidth: 980 }}>
+          <main style={styles.main}>
             {this.props.children}
-          </Grid>
-          <Footer />
+            <Footer />
+          </main>
         </div>
     );
   }

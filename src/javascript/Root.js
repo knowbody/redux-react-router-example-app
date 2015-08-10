@@ -3,8 +3,10 @@ import { Provider } from 'react-redux'
 import routes from './config/routes'
 import { store } from './redux'
 import mui from 'material-ui'
+import theme from './config/theme'
 
 const ThemeManager = new mui.Styles.ThemeManager();
+ThemeManager.setTheme(theme);
 
 export default class Root extends Component {
   /*

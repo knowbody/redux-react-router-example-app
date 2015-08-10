@@ -1,6 +1,3 @@
-// Use webpacks css loader to import all the CSS we need
-import css from './css'
-
 import React from 'react'
 
 var injectTapEventPlugin = require("react-tap-event-plugin");

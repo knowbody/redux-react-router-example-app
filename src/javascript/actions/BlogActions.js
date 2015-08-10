@@ -1,17 +1,23 @@
 import * as types from './ActionTypes'
 
+// Structure based on https://github.com/acdlite/flux-standard-action
+
 export function addPost(title, intro, body) {
   return {
     type: types.ADD_POST,
-    title,
-    intro,
-    body
+    payload: {
+      title,
+      intro,
+      body
+    }
   }
 }
 
 export function removePost(id) {
   return {
     type: types.REMOVE_POST,
-    id
+    payload: {
+      id
+    }
   }
 }

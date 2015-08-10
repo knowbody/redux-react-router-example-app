@@ -17,9 +17,7 @@ class BlogApp extends Component {
 
     return (
         <AppBar>
-          {blogposts.map((post, i) => <Post key={i} post={post} index={i}
-                                            onRemove={actions.removePost.bind(this, post.id)}/>)}
-
+          {blogposts.map((post, i) => <Post key={i} post={post} index={i} actions={actions} />)}
         </AppBar>
     );
   }

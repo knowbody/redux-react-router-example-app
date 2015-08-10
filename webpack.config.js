@@ -38,9 +38,25 @@ module.exports = {
       loaders: ['style', 'raw'],
       include: __dirname
     }, {
+      test: /\.less$/,
+      loaders: ['style', 'css', 'less'],
+      include: __dirname
+    }, {
       test: /\.png$/,
       loader: "url-loader?mimetype=image/png",
       include: path.join(__dirname, 'src', 'images')
+    }, {
+      test: /\.woff|\.woff2$/,
+      loader: "url?limit=10000&mimetype=application/font-woff"
+    }, {
+      test: /\.ttf$/,
+      loader: "url?limit=10000&mimetype=application/octet-stream"
+    }, {
+      test: /\.eot$/,
+      loader: "file"
+    }, {
+      test: /\.svg$/,
+      loader: "url?limit=10000&mimetype=image/svg+xml"
     }]
   }
 };

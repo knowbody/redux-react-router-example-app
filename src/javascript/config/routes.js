@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { Redirect, Router, Route } from 'react-router'
 
 import Blog from '../views/Blog';
+import Login from '../views/Login';
 
 /*
   Here we define our application routing structure - this will then be
@@ -14,9 +15,8 @@ import Blog from '../views/Blog';
 export default function routes(history) {
   return (
       <Router history={history}>
-        <Route path='/' component={Blog}>
-
-        </Route>
+        <Route path='/' component={Blog} />
+        <Route path='/login' component={Login} />
       </Router>
   )
 }

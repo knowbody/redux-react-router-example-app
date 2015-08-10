@@ -19,7 +19,8 @@ let styles = {
   },
 
   footerText: {
-    padding: '5%',
+    textAlign: 'right',
+    padding: '40px 0',
     fontSize: '10px'
   }
 }
