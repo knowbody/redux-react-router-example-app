@@ -30,7 +30,7 @@ export default class Blogpost extends Component {
         position: 'absolute',
         top: 12,
         right: 16,
-        zIndex: 1000
+        zIndex: 5
       },
       cardMedia: {
         marginTop: 20,

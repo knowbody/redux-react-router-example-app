@@ -1,5 +1,6 @@
 export const ADD_POST = 'ADD_POST';
 export const REMOVE_POST = 'REMOVE_POST';
+export const UPDATE_DRAFT = 'UPDATE_DRAFT';
 
 export const LOGIN = 'LOGIN_BEGIN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';

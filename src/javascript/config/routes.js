@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { Redirect, Router, Route } from 'react-router'
 
 import Blog from '../views/Blog';
+import Draft from '../views/Draft';
 import Login from '../views/Login';
 
 /*
@@ -16,6 +17,7 @@ export default function routes(history) {
   return (
       <Router history={history}>
         <Route path='/' component={Blog} />
+        <Route path='/post/new' component={Draft} />
         <Route path='/login' component={Login} />
       </Router>
   )

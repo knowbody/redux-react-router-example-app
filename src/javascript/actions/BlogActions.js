@@ -1,15 +1,19 @@
 import * as types from './ActionTypes'
 
-// Structure based on https://github.com/acdlite/flux-standard-action
+const catImg = 'http://thecatapi.com/api/images/get?type=jpg';
+const rnd = Math.random;
 
-export function addPost(title, intro, body) {
-  return {
-    type: types.ADD_POST,
-    payload: {
-      title,
-      intro,
-      body
-    }
+// Structure based on https://github.com/acdlite/flux-standard-action
+export function addPost(post) {
+  return (dispatch, getState) => {
+    const { user } = getState();
+
+    post.user = user;
+
+    dispatch({
+      type: types.ADD_POST,
+      payload: post
+    });
   }
 }
 
@@ -19,5 +23,12 @@ export function removePost(id) {
     payload: {
       id
     }
+  }
+}
+
+export function updateDraft(draft) {
+  return {
+    type: types.UPDATE_DRAFT,
+    payload: draft
   }
 }

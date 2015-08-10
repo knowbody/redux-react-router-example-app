@@ -32,7 +32,6 @@ const initialState = [{
     username: 'Joda',
     avatar: `http://thecatapi.com/api/images/get?type=gif&r='${Math.random()}`
   }
-
 }];
 
 export default function blogposts(state = initialState, action = {}) {
@@ -45,8 +44,8 @@ export default function blogposts(state = initialState, action = {}) {
         title: payload.title,
         subtitle: payload.subtitle,
         poster: payload.poster,
-        avatar: payload.avatar,
-        body: payload.body
+        body: payload.body,
+        user: payload.user
       }, ...state];
 
     case REMOVE_POST:
