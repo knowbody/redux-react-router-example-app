@@ -1,7 +1,10 @@
+const randGender = ['men', 'women'][Math.floor(Math.random() * 2)];
+const baseUrl = 'https://randomuser.me/api/portraits/med/';
+
 const initialState = {
   id: 1,
   username: 'Law',
-  avatar: `http://thecatapi.com/api/images/get?type=gif&r='${Math.random()}`
+  avatar: `${baseUrl}${randGender}/${Math.floor(Math.random() * 100) + 1}.jpg`
 };
 
 export default function user(state = initialState, action = {}) {
