@@ -1,4 +1,4 @@
-import thunk from 'redux-thunk'
+import thunk from 'redux-thunk';
 
 /**
  * Logs previous and current state for every action call
@@ -10,7 +10,7 @@ function logger({ getState }) {
     console.log('Dispatching: ', action);
 
     // Call the next dispatch method in the middleware chain.
-    let returnValue = next(action);
+    const returnValue = next(action);
 
     console.log('state after dispatch', getState());
 
@@ -20,7 +20,4 @@ function logger({ getState }) {
   };
 }
 
-export default [
-  thunk,
-  logger
-]
+export default [thunk, logger];

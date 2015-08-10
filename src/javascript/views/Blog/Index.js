@@ -1,20 +1,20 @@
-import React, { Component, PropTypes } from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import AppBar from '../../containers/AppBar'
-import { FloatingActionButton } from 'material-ui'
-import ContentAdd from 'material-ui/lib/svg-icons/content/add'
-import Post from './Post'
-import * as BlogActions from '../../actions/BlogActions'
+import React, { Component, PropTypes } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import AppBar from '../../containers/AppBar';
+import { FloatingActionButton } from 'material-ui';
+import ContentAdd from 'material-ui/lib/svg-icons/content/add';
+import Post from './Post';
+import * as BlogActions from '../../actions/BlogActions';
 
 class BlogApp extends Component {
-  static contextTypes = {
-    router: PropTypes.object.isRequired
-  }
-
   static propTypes = {
     blogposts: PropTypes.array.isRequired,
     dispatch: PropTypes.func.isRequired
+  }
+
+  static contextTypes = {
+    router: PropTypes.object.isRequired
   }
 
   getStyles() {
@@ -25,7 +25,7 @@ class BlogApp extends Component {
         bottom: 20,
         zIndex: 100
       }
-    }
+    };
   }
 
   render() {
@@ -36,8 +36,12 @@ class BlogApp extends Component {
 
     return (
         <AppBar>
-          {blogposts.map((post, i) => <Post key={i} post={post} index={i} actions={actions} />)}
-          <FloatingActionButton style={styles.addContent} onTouchTap={() => router.transitionTo('/post/new')}>
+          {blogposts.map((post, i) =>
+            <Post key={i} post={post} index={i} actions={actions} />
+          )}
+          <FloatingActionButton style={styles.addContent}
+                                onTouchTap={
+                                  () => router.transitionTo('/post/new')}>
             <ContentAdd />
           </FloatingActionButton>
         </AppBar>

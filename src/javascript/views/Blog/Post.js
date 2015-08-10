@@ -1,22 +1,29 @@
-import React, { Component, PropTypes } from 'react'
-import { Avatar ,Card, CardHeader, CardMedia, CardTitle, CardText, IconButton } from 'material-ui'
-import IconMenu from 'material-ui/lib/menus/icon-menu'
-import MenuItem from 'material-ui/lib/menus/menu-item'
-import NavigationMoreVert from 'material-ui/lib/svg-icons/navigation/more-vert'
-import ActionDelete from 'material-ui/lib/svg-icons/action/delete'
-import SocialShare from 'material-ui/lib/svg-icons/social/share'
+import React, { Component, PropTypes } from 'react';
+import {
+  Card,
+  CardHeader,
+  CardMedia,
+  CardTitle,
+  CardText,
+  IconButton
+} from 'material-ui';
+import IconMenu from 'material-ui/lib/menus/icon-menu';
+import MenuItem from 'material-ui/lib/menus/menu-item';
+import NavigationMoreVert from 'material-ui/lib/svg-icons/navigation/more-vert';
+import ActionDelete from 'material-ui/lib/svg-icons/action/delete';
+import SocialShare from 'material-ui/lib/svg-icons/social/share';
 
 export default class Blogpost extends Component {
-  static contextTypes = {
-    muiTheme: React.PropTypes.object
-  }
-
   static propTypes = {
     actions: PropTypes.shape({
       removePost: PropTypes.func
     }).isRequired,
     index: PropTypes.number.isRequired,
     post: PropTypes.object.isRequired
+  }
+
+  static contextTypes = {
+    muiTheme: React.PropTypes.object
   }
 
   getStyles() {
@@ -45,20 +52,22 @@ export default class Blogpost extends Component {
         maxHeight: '500px',
         maxWidth: '100%'
       }
-    }
+    };
   }
 
   render() {
-    const { actions, index, post } = this.props;
+    const { actions, post } = this.props;
     const styles = this.getStyles();
 
-    let title = <CardTitle title={post.title} subtitle={post.subtitle}/>;
+    let title = <CardTitle title={post.title} subtitle={post.subtitle} />;
 
     if (post.poster) {
       title = (
-          <CardMedia style={styles.cardMedia} mediaStyle={styles.cardMediaStyle} overlay={title}>
+          <CardMedia style={styles.cardMedia}
+                     mediaStyle={styles.cardMediaStyle}
+                     overlay={title}>
             <div>
-              <img style={styles.cardMediaImage} src={post.poster}/>
+              <img style={styles.cardMediaImage} src={post.poster} />
             </div>
           </CardMedia>
       );
@@ -67,10 +76,13 @@ export default class Blogpost extends Component {
     return (
         <Card style={styles.card}>
           <CardHeader title={post.user.username} avatar={post.user.avatar}>
-            <IconMenu style={styles.iconMenu} iconButtonElement={<IconButton><NavigationMoreVert /></IconButton>}>
-              <MenuItem leftIcon={<ActionDelete />} primaryText="Remove"
-                        onTouchTap={actions.removePost.bind(null, post)}/>
-              <MenuItem leftIcon={<SocialShare />} primaryText="Share"/>
+            <IconMenu style={styles.iconMenu}
+                      iconButtonElement={
+                        <IconButton><NavigationMoreVert /></IconButton>
+                      }>
+              <MenuItem leftIcon={<ActionDelete />} primaryText='Remove'
+                        onTouchTap={actions.removePost.bind(null, post)} />
+              <MenuItem leftIcon={<SocialShare />} primaryText='Share' />
             </IconMenu>
           </CardHeader>
           {title}

@@ -1,12 +1,12 @@
-import React, { Component, PropTypes } from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 class AppBar extends Component {
   static propTypes = {
-    dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired,
+    children: PropTypes.array.isRequired
   }
 
   getStyles() {
@@ -16,7 +16,7 @@ class AppBar extends Component {
         margin: '0 auto',
         paddingTop: 10
       }
-    }
+    };
   }
 
   render() {
@@ -34,4 +34,4 @@ class AppBar extends Component {
   }
 }
 
-export default connect(state => ({}))(AppBar);
+export default connect()(AppBar);

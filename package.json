@@ -1,10 +1,11 @@
 {
-  "name": "react-redux-boilerplate",
+  "name": "redux-blogapp",
   "version": "0.0.1",
-  "description": "React Redux Boilerplate",
+  "description": "Redux and React Router Blogapp example",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "lint": "`npm bin`/eslint src/javascript",
     "test": "NODE_ENV=test mocha --compilers js:babel/register --recursive",
     "test:watch": "NODE_ENV=test mocha --compilers js:babel/register --recursive --watch",
     "test:cov": "babel-node ./node_modules/.bin/isparta cover ./node_modules/.bin/_mocha -- --recursive"
@@ -24,8 +25,12 @@
   "devDependencies": {
     "babel": "^5.8.12",
     "babel-core": "^5.6.18",
+    "babel-eslint": "^4.0.5",
     "babel-loader": "^5.1.4",
     "css-loader": "^0.15.6",
+    "eslint": "^1.1.0",
+    "eslint-config-airbnb": "0.0.7",
+    "eslint-plugin-react": "^3.2.1",
     "expect": "^1.8.0",
     "file-loader": "^0.8.4",
     "isparta": "^3.0.3",

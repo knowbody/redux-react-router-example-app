@@ -1,24 +1,21 @@
-import React, { PropTypes, Component } from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import { Paper, TextField, RaisedButton } from 'material-ui'
-import ActionAccountCicle from 'material-ui/lib/svg-icons/action/account-circle'
-
-
-import * as AuthActions from '../../actions/AuthActions'
+import React, { PropTypes, Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Paper, TextField, RaisedButton } from 'material-ui';
+import ActionAccountCicle
+from 'material-ui/lib/svg-icons/action/account-circle';
+import * as AuthActions from '../../actions/AuthActions';
 
 class Login extends Component {
-  static contextTypes = {
-    muiTheme: PropTypes.object.isRequired
-  }
-
   static propTypes = {
     dispatch: PropTypes.func.isRequired
   }
 
-  getStyles() {
-    const { palette } = this.context.muiTheme;
+  static contextTypes = {
+    muiTheme: PropTypes.object.isRequired
+  }
 
+  getStyles() {
     return {
       center: {
         display: 'flex',
@@ -38,7 +35,7 @@ class Login extends Component {
         marginBottom: 20,
         width: '100%'
       }
-    }
+    };
   }
 
   render() {
@@ -48,11 +45,21 @@ class Login extends Component {
         <div style={styles.center}>
           <Paper style={styles.paper}>
             <ActionAccountCicle style={{ height: 100, width: 100 }}/><br/>
-            <TextField ref="identity" hintText="email" floatingLabelText="email" defaultValue="john.doe@example.com"
-                       onKeyDown={::this.submit}/><br/>
-            <TextField ref="password" hintText="password" floatingLabelText="password" type="password"
-                       defaultValue="qwertyuiop" onKeyDown={::this.submit}/><br />
-            <RaisedButton style={styles.submit} label="Submit" primary={true} onTouchTap={::this.submit}/>
+            <TextField ref='identity'
+                       hintText='email'
+                       floatingLabelText='email'
+                       defaultValue='john.doe@example.com'
+                       onKeyDown={::this.submit} /><br/>
+            <TextField ref='password'
+                       hintText='password'
+                       floatingLabelText='password'
+                       type='password'
+                       defaultValue='qwertyuiop'
+                       onKeyDown={::this.submit} /><br />
+            <RaisedButton style={styles.submit}
+                          label='Submit'
+                          primary={true}
+                          onTouchTap={::this.submit} />
           </Paper>
         </div>
     );
@@ -71,6 +78,4 @@ class Login extends Component {
   }
 }
 
-export default connect(state => ({
-  user: state.user
-}))(Login);
+export default connect(state => ({ user: state.user }))(Login);
