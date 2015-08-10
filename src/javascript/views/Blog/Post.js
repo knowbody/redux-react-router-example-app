@@ -69,7 +69,7 @@ export default class Blogpost extends Component {
           <CardHeader title={post.user.username} avatar={post.user.avatar}>
             <IconMenu style={styles.iconMenu} iconButtonElement={<IconButton><NavigationMoreVert /></IconButton>}>
               <MenuItem leftIcon={<ActionDelete />} primaryText="Remove"
-                        onTouchTap={actions.removePost.bind(null, post.id)}/>
+                        onTouchTap={actions.removePost.bind(null, post)}/>
               <MenuItem leftIcon={<SocialShare />} primaryText="Share"/>
             </IconMenu>
           </CardHeader>

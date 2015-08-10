@@ -17,12 +17,10 @@ export function addPost(post) {
   }
 }
 
-export function removePost(id) {
+export function removePost(post) {
   return {
     type: types.REMOVE_POST,
-    payload: {
-      id
-    }
+    payload: post
   }
 }
 
