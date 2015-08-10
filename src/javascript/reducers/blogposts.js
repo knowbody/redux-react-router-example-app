@@ -1,4 +1,4 @@
-import { ADD_POST, REMOVE_POST } from '../actions/ActionTypes'
+import { ADD_POST, REMOVE_POST } from '../constants/ActionTypes'
 
 const initialState = [{
   id: 0,

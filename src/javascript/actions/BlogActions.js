@@ -1,4 +1,4 @@
-import * as types from './ActionTypes'
+import * as types from './../constants/ActionTypes'
 
 const catImg = 'http://thecatapi.com/api/images/get?type=jpg';
 const rnd = Math.random;

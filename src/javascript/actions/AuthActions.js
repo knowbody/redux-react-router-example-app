@@ -1,4 +1,4 @@
-import * as types from './ActionTypes'
+import * as types from './../constants/ActionTypes'
 
 // Structure based on https://github.com/acdlite/flux-standard-action
 

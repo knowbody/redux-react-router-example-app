@@ -1,4 +1,4 @@
-import { LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE, REGISTER, REGISTER_SUCCESS, REGISTER_FAILURE } from '../actions/ActionTypes'
+import { LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE, REGISTER, REGISTER_SUCCESS, REGISTER_FAILURE } from '../constants/ActionTypes'
 
 const initialState = {
   id: 1,

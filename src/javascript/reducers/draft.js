@@ -1,4 +1,4 @@
-import { ADD_POST, UPDATE_DRAFT } from '../actions/ActionTypes'
+import { ADD_POST, UPDATE_DRAFT } from '../constants/ActionTypes'
 
 const initialState = {
   title: '',
