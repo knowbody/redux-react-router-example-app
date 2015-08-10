@@ -1,8 +1,7 @@
 language: node_js
 node_js:
   - "iojs"
-before_deploy:
-  run: "npm run deploy"
+before_deploy: "npm run deploy"
 deploy:
   app: redux-blogapp
   provider: heroku
