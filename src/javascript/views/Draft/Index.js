@@ -5,13 +5,13 @@ import AppBar from '../../containers/AppBar'
 import { Avatar, Paper, TextField, RaisedButton } from 'material-ui'
 import * as BlogActions from '../../actions/BlogActions'
 
-class BlogApp extends Component {
+class Draft extends Component {
   static contextTypes = {
     router: PropTypes.object.isRequired
   }
 
   static propTypes = {
-    blogposts: PropTypes.array.isRequired,
+    draft: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired
   }
 
@@ -70,4 +70,4 @@ class BlogApp extends Component {
   }
 }
 
-export default connect(state => ({draft: state.draft}))(BlogApp);
+export default connect(state => ({draft: state.draft}))(Draft);
