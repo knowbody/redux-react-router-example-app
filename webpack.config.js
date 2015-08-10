@@ -1,3 +1,4 @@
+/* eslint-disable no-var */
 var path = require('path');
 var webpack = require('webpack');
 
@@ -29,10 +30,6 @@ module.exports = {
       loaders: ['react-hot', 'babel'],
       exclude: /node_modules/,
       include: path.join(__dirname, 'src', 'javascript')
-    }, {
-      test: /\.js$/,
-      loaders: ['babel'],
-      include: path.join(__dirname, '..', '..', 'src')
     }, {
       test: /\.css$/,
       loaders: ['style', 'raw'],
