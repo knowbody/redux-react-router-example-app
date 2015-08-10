@@ -1,9 +1,10 @@
 language: node_js
 node_js:
   - "iojs"
+before_deploy:
+  run: "npm run deploy"
 deploy:
   app: redux-blogapp
   provider: heroku
-  run: "npm run deploy"
   api_key:
     secure: DrBcemzWSqURFGhJ1UyDRTtRlNDt9hPNfvKksUmkiln6Q2DQ8QfOVa5+FiafZGs6imW9fjOtS5sPeMIuKtXNTpY5jb/XHYCCPEHVGBuT3UXGRNJ27vylQdM4tP9huuQ3mYzYR5/tI53DE/kCRztXYeqmnlWtjOfjtJq7d53JBProy6exIRoces36CEnp5V4G8zMfk/b9JtJXeckzEJKGnX3Xd528SnwukZe06dg1ryoj40ddCHXpEuzapKBSuyqzMRsf3vBI3l5QR3ZUiOVpMpwWyZrRgvqpgBj2RQUKgBSgp3T8fv1NjWSdxLc+XX/VVOQABFO7QDhyp2psOoSuGewqyEKCSYph4YEx5A75C2pmZ0MhNWxwu793X5Xdx2n5YrSrkUrLWckKKFGXY8TvKf+zjLdcKknBLCfZjZ7SBdjKQ0z8+G07xkNmTcDPzu9n+OaW8EPahzkK1bw69tCML0SnKKqWGOSdPVkJeuYzsz7KqIkFfKQlfqp9Tp/IW7/p05v8EAJZkCd9UZSrfw9/zmjq3RoxcmeLLNnH3Hava9fKk1dCOqP8HhVUTKP1uY/qTroAR1hpugeUQ/1pPaQret42A0k5CQsnsQ+ofcTJkRq2r+Mjf3grML2sON6YqDBExXC5aLFuBj9SMxpSFr4SrxFmXt5xBDWE3WNxNVYHZcE=
