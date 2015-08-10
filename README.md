@@ -2,7 +2,7 @@ Redux and React Router Example App
 ===
 [![Build Status](https://travis-ci.org/knowbody/redux-react-router-example-app.svg)](https://travis-ci.org/knowbody/redux-react-router-example-app)
 
-(Work in progres...)
+(Work in progress...)
 **The goal:** I decided to start working on this project because I found myself and also some of
 others looking for an example of "fully-featured" app.
 
