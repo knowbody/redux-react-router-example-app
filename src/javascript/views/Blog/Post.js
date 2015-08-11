@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import {
-    Card,
-    CardHeader,
-    CardMedia,
-    CardTitle,
-    CardText,
-    IconButton
+  Card,
+  CardHeader,
+  CardMedia,
+  CardTitle,
+  CardText,
+  IconButton
 } from 'material-ui';
 import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
