@@ -3,6 +3,9 @@ import * as types from '../constants/ActionTypes';
 const randGender = ['men', 'women'][Math.floor(Math.random() * 2)];
 const baseUrl = 'https://randomuser.me/api/portraits/med/';
 
+const randGender = ['men', 'women'][Math.floor(Math.random() * 2)];
+const baseUrl = 'https://randomuser.me/api/portraits/med/';
+
 const initialState = [{
   id: 1,
   title: 'Blogs are awesome',
