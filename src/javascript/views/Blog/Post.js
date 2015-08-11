@@ -85,7 +85,9 @@ export default class Blogpost extends Component {
                         <IconButton><NavigationMoreVert /></IconButton>
                       }>
               <MenuItem leftIcon={<EditorModeEdit />} primaryText='Edit'
-                        onTouchTap={() => router.transitionTo(`/post/${post.id}/edit`)}/>
+                        onTouchTap={() => {
+                          router.transitionTo(`/post/${post.id}/edit`);
+                        }}/>
               <MenuItem leftIcon={<ActionDelete />} primaryText='Remove'
                         onTouchTap={actions.removePost.bind(null, post)}/>
               <MenuItem leftIcon={<SocialShare />} primaryText='Share'/>

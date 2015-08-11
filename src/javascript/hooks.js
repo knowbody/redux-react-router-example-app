@@ -1,9 +1,11 @@
-import { bindActionCreators } from 'redux'
-import * as BlogActions from './actions/BlogActions'
+import { bindActionCreators } from 'redux';
+import * as BlogActions from './actions/BlogActions';
 
-export function editPost({ getState, dispatch }) {
+export function editPost(store) {
+  const { dispatch } = store;
+
   return ({ params }) => {
     const actions = bindActionCreators(BlogActions, dispatch);
     actions.editPost(parseInt(params.id, 10));
-  }
+  };
 }

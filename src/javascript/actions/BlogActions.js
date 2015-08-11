@@ -14,21 +14,17 @@ export function addPost(post) {
 }
 
 export function updatePost(post) {
-  return (dispatch, getState) => {
-    const { user } = getState();
-
-    dispatch({
-      type: types.UPDATE_POST,
-      payload: post
-    });
-  }
+  return {
+    type: types.UPDATE_POST,
+    payload: post
+  };
 }
 
 export function editPost(postId) {
   return (dispatch, getState) => {
     const { blogposts } = getState();
 
-    const post = blogposts.filter(post => post.id === postId)[0];
+    const post = blogposts.filter(obj => obj.id === postId)[0];
 
     if (!post) return;
 
@@ -36,7 +32,7 @@ export function editPost(postId) {
       type: types.EDIT_POST,
       payload: post
     });
-  }
+  };
 }
 
 export function removePost(post) {

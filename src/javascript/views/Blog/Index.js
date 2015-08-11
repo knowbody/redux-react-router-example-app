@@ -39,7 +39,10 @@ class BlogApp extends Component {
           {blogposts.map((post, i) =>
                   <Post key={i} post={post} index={i} actions={actions}/>
           )}
-          <FloatingActionButton style={styles.addContent} onTouchTap={() => router.transitionTo('/post/new')}>
+          <FloatingActionButton style={styles.addContent}
+                                onTouchTap={() => {
+                                  router.transitionTo('/post/new');
+                                }}>
             <ContentAdd />
           </FloatingActionButton>
         </AppBar>
