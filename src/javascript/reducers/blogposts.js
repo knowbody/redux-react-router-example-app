@@ -1,10 +1,10 @@
-import { ADD_POST, REMOVE_POST } from '../constants/ActionTypes';
+import * as types from '../constants/ActionTypes';
 
 const randGender = ['men', 'women'][Math.floor(Math.random() * 2)];
 const baseUrl = 'https://randomuser.me/api/portraits/med/';
 
 const initialState = [{
-  id: 0,
+  id: 1,
   title: 'Blogs are awesome',
   subtitle: 'Intro to my blog',
   poster: `http://thecatapi.com/api/images/get?type=jpg&r='${Math.random()}`,
@@ -15,7 +15,7 @@ const initialState = [{
     avatar: `${baseUrl}${randGender}/${Math.floor(Math.random() * 100) + 1}.jpg`
   }
 }, {
-  id: 1,
+  id: 2,
   title: 'React Router is cool',
   subtitle: 'Another intro',
   body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
@@ -25,7 +25,7 @@ const initialState = [{
     avatar: `${baseUrl}${randGender}/${Math.floor(Math.random() * 100) + 1}.jpg`
   }
 }, {
-  id: 2,
+  id: 3,
   title: 'Use Redux',
   subtitle: 'Intro to Redux',
   poster: `http://thecatapi.com/api/images/get?type=jpg&r='${Math.random()}`,
@@ -37,13 +37,21 @@ const initialState = [{
   }
 }];
 
+function indexOfObjectById(arr, obj) {
+  for (let i = 0, length = arr.length; i < length; i++) {
+    if (arr[i].id === obj.id) return i;
+  }
+}
+
 export default function blogposts(state = initialState, action = {}) {
   const { type, payload } = action;
 
   switch (type) {
-  case ADD_POST:
+  case types.ADD_POST:
     return [{
-      id: (state.length === 0) ? 0 : state[0].id + 1,
+      id: (state.length === 0)
+          ? 1
+          : Math.max.apply(state.map(post => post.id)) + 1,
       title: payload.title,
       subtitle: payload.subtitle,
       poster: payload.poster,
@@ -51,7 +59,15 @@ export default function blogposts(state = initialState, action = {}) {
       user: payload.user
     }, ...state];
 
-  case REMOVE_POST:
+  case types.UPDATE_POST:
+    const index = indexOfObjectById(state, payload);
+    const oldPost = state[index];
+    const newState = [...state];
+    newState.splice(index, 1, {...oldPost, ...payload});
+
+    return newState;
+
+  case types.REMOVE_POST:
     return state.filter(blogpost =>
         blogpost.id !== payload.id
     );

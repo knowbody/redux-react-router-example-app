@@ -13,6 +13,28 @@ export function addPost(post) {
   };
 }
 
+export function updatePost(post) {
+  return {
+    type: types.UPDATE_POST,
+    payload: post
+  };
+}
+
+export function editPost(postId) {
+  return (dispatch, getState) => {
+    const { blogposts } = getState();
+
+    const post = blogposts.filter(obj => obj.id === postId)[0];
+
+    if (!post) return;
+
+    dispatch({
+      type: types.EDIT_POST,
+      payload: post
+    });
+  };
+}
+
 export function removePost(post) {
   return {
     type: types.REMOVE_POST,

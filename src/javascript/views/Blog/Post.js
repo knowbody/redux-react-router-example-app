@@ -10,12 +10,14 @@ import {
 import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import NavigationMoreVert from 'material-ui/lib/svg-icons/navigation/more-vert';
+import EditorModeEdit from 'material-ui/lib/svg-icons/editor/mode-edit';
 import ActionDelete from 'material-ui/lib/svg-icons/action/delete';
 import SocialShare from 'material-ui/lib/svg-icons/social/share';
 
 export default class Blogpost extends Component {
   static propTypes = {
     actions: PropTypes.shape({
+      editPost: PropTypes.func,
       removePost: PropTypes.func
     }).isRequired,
     index: PropTypes.number.isRequired,
@@ -23,7 +25,8 @@ export default class Blogpost extends Component {
   }
 
   static contextTypes = {
-    muiTheme: React.PropTypes.object
+    router: PropTypes.object.isRequired,
+    muiTheme: PropTypes.object
   }
 
   getStyles() {
@@ -56,10 +59,11 @@ export default class Blogpost extends Component {
   }
 
   render() {
+    const { router } = this.context;
     const { actions, post } = this.props;
     const styles = this.getStyles();
 
-    let title = <CardTitle title={post.title} subtitle={post.subtitle} />;
+    let title = <CardTitle title={post.title} subtitle={post.subtitle}/>;
 
     if (post.poster) {
       title = (
@@ -67,7 +71,7 @@ export default class Blogpost extends Component {
                      mediaStyle={styles.cardMediaStyle}
                      overlay={title}>
             <div>
-              <img style={styles.cardMediaImage} src={post.poster} />
+              <img style={styles.cardMediaImage} src={post.poster}/>
             </div>
           </CardMedia>
       );
@@ -80,9 +84,13 @@ export default class Blogpost extends Component {
                       iconButtonElement={
                         <IconButton><NavigationMoreVert /></IconButton>
                       }>
+              <MenuItem leftIcon={<EditorModeEdit />} primaryText='Edit'
+                        onTouchTap={() => {
+                          router.transitionTo(`/post/${post.id}/edit`);
+                        }}/>
               <MenuItem leftIcon={<ActionDelete />} primaryText='Remove'
-                        onTouchTap={actions.removePost.bind(null, post)} />
-              <MenuItem leftIcon={<SocialShare />} primaryText='Share' />
+                        onTouchTap={actions.removePost.bind(null, post)}/>
+              <MenuItem leftIcon={<SocialShare />} primaryText='Share'/>
             </IconMenu>
           </CardHeader>
           {title}
