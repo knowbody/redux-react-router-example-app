@@ -5,8 +5,7 @@ import Footer from '../components/Footer';
 
 class AppBar extends Component {
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    children: PropTypes.array.isRequired
+    dispatch: PropTypes.func.isRequired
   }
 
   getStyles() {
