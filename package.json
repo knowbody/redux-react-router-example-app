@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node server.js",
     "lint": "`npm bin`/eslint src/javascript",
-    "deploy": "npm install && `npm bin`/webpack --config webpack.config.production.js",
+    "deploy": "export NODE_ENV=production && `npm bin`/webpack --config webpack.config.production.js && npm start",
     "test": "NODE_ENV=test mocha --compilers js:babel/register --recursive",
     "test:watch": "NODE_ENV=test mocha --compilers js:babel/register --recursive --watch",
     "test:cov": "babel-node ./node_modules/.bin/isparta cover ./node_modules/.bin/_mocha -- --recursive"
@@ -23,6 +23,7 @@
   "homepage": "https://github.com/knowbody/redux-react-router-example-app",
   "dependencies": {
     "classnames": "^2.1.2",
+    "express": "^4.13.3",
     "material-ui": "^0.10.2",
     "normalize.css": "^3.0.3",
     "react": "^0.13.3",
