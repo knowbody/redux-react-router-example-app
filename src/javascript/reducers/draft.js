@@ -17,6 +17,12 @@ export default function draft(state = initialState, action = {}) {
       poster: `http://thecatapi.com/api/images/get?type=jpg&r='${Math.random()}`
     };
 
+  case types.UPDATE_POST:
+    return {
+      ...initialState,
+      poster: `http://thecatapi.com/api/images/get?type=jpg&r='${Math.random()}`
+    };
+
   case types.EDIT_POST:
     return {...payload};
 

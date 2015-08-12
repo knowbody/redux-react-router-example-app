@@ -20,13 +20,18 @@ export default class Blogpost extends Component {
       editPost: PropTypes.func,
       removePost: PropTypes.func
     }).isRequired,
-    index: PropTypes.number.isRequired,
-    post: PropTypes.object.isRequired
+    post: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired
   }
 
   static contextTypes = {
     router: PropTypes.object.isRequired,
     muiTheme: PropTypes.object
+  }
+
+  static defaultProps = {
+    post: {},
+    user: {}
   }
 
   getStyles() {
@@ -60,7 +65,7 @@ export default class Blogpost extends Component {
 
   render() {
     const { router } = this.context;
-    const { actions, post } = this.props;
+    const { actions, post, user } = this.props;
     const styles = this.getStyles();
 
     let title = <CardTitle title={post.title} subtitle={post.subtitle}/>;
@@ -79,7 +84,8 @@ export default class Blogpost extends Component {
 
     return (
         <Card style={styles.card}>
-          <CardHeader title={post.user.username} avatar={post.user.avatar}>
+          <CardHeader title={`${user.firstname} ${user.lastname}`}
+                      avatar={user.avatar}>
             <IconMenu style={styles.iconMenu}
                       iconButtonElement={
                         <IconButton><NavigationMoreVert /></IconButton>
