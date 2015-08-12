@@ -1,10 +1,24 @@
+import * as urls from '../config/urls';
 import * as types from './../constants/ActionTypes';
+import {load} from './utils/fetch';
+
+export function fetchPosts(start = 0, limit = 10) {
+  return async (dispatch) => {
+    const response = await load(`${urls.api}/post?_start=${start}&_limit=${limit}`);
+    const posts = await response.json();
+
+    dispatch({
+      type: types.FETCH_POSTS,
+      payload: posts
+    });
+  };
+}
 
 export function addPost(post) {
   return (dispatch, getState) => {
-    const { user } = getState();
+    const { auth } = getState();
 
-    post.user = user;
+    post.user = auth.user.id;
 
     dispatch({
       type: types.ADD_POST,

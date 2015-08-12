@@ -38,7 +38,7 @@ casual.define('post', function() {
     subtitle: casual.title,
     poster: 'http://thecatapi.com/api/images/get?type=jpg&r=' + postId,
     body: casual.text,
-    creator: Math.floor(Math.random() * 100)
+    user: Math.floor(Math.random() * 99 + 1)
   };
 });
 

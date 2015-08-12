@@ -10,6 +10,8 @@ import Blog from './views/Blog';
 import Draft from './views/Draft';
 import Login from './views/Login';
 
+hooks.bootstrap(store)();
+
 export default class Root extends Component {
   static propTypes = {
     history: PropTypes.object.isRequired

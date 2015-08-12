@@ -30,14 +30,17 @@ class BlogApp extends Component {
 
   render() {
     const { router } = this.context;
-    const { blogposts, dispatch } = this.props;
+    const { blogposts, users, dispatch } = this.props;
     const actions = bindActionCreators(BlogActions, dispatch);
     const styles = this.getStyles();
 
     return (
         <AppBar>
           {blogposts.map((post, i) =>
-                  <Post key={i} post={post} index={i} actions={actions}/>
+                  <Post key={i}
+                        post={post}
+                        user={users.filter(user => user.id === post.user)[0]}
+                        actions={actions}/>
           )}
           <FloatingActionButton style={styles.addContent}
                                 onTouchTap={() => {
@@ -50,4 +53,7 @@ class BlogApp extends Component {
   }
 }
 
-export default connect(state => ({blogposts: state.blogposts}))(BlogApp);
+export default connect(state => ({
+  blogposts: state.blogposts,
+  users: state.users
+}))(BlogApp);
