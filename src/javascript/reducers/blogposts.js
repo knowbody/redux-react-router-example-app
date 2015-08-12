@@ -1,8 +1,5 @@
 import * as types from '../constants/ActionTypes';
 
-const randGender = ['men', 'women'][Math.floor(Math.random() * 2)];
-const baseUrl = 'https://randomuser.me/api/portraits/med/';
-
 function indexOfObjectById(arr, obj) {
   for (let i = 0, length = arr.length; i < length; i++) {
     if (arr[i].id === obj.id) return i;
@@ -14,7 +11,7 @@ export default function blogposts(state = [], action = {}) {
 
   switch (type) {
   case types.FETCH_POSTS:
-      return [...payload];
+    return [...payload];
 
   case types.ADD_POST:
     return [{

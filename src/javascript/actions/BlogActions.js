@@ -4,7 +4,9 @@ import {load} from './utils/fetch';
 
 export function fetchPosts(start = 0, limit = 10) {
   return async (dispatch) => {
-    const response = await load(`${urls.api}/post?_start=${start}&_limit=${limit}`);
+    const response = await load(
+        `${urls.api}/post?_start=${start}&_limit=${limit}`
+    );
     const posts = await response.json();
 
     dispatch({

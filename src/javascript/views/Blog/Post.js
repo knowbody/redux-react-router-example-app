@@ -24,14 +24,14 @@ export default class Blogpost extends Component {
     user: PropTypes.object.isRequired
   }
 
-  static defaultProps = {
-    post: {},
-    user: {}
-  }
-
   static contextTypes = {
     router: PropTypes.object.isRequired,
     muiTheme: PropTypes.object
+  }
+
+  static defaultProps = {
+    post: {},
+    user: {}
   }
 
   getStyles() {
@@ -84,7 +84,8 @@ export default class Blogpost extends Component {
 
     return (
         <Card style={styles.card}>
-          <CardHeader title={`${user.firstname} ${user.lastname}`} avatar={user.avatar}>
+          <CardHeader title={`${user.firstname} ${user.lastname}`}
+                      avatar={user.avatar}>
             <IconMenu style={styles.iconMenu}
                       iconButtonElement={
                         <IconButton><NavigationMoreVert /></IconButton>

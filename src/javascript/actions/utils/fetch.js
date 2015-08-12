@@ -1,4 +1,4 @@
-export function load(url, params) {
+export function load(url) {
   return fetch(url, {
     method: 'get',
     mode: 'cors',

@@ -10,6 +10,7 @@ import * as BlogActions from '../../actions/BlogActions';
 class BlogApp extends Component {
   static propTypes = {
     blogposts: PropTypes.array.isRequired,
+    users: PropTypes.array.isRequired,
     dispatch: PropTypes.func.isRequired
   }
 

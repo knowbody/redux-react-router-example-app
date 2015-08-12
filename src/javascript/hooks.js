@@ -9,7 +9,7 @@ export function bootstrap({ dispatch }) {
   return () => {
     blogActions.fetchPosts(0, 10);
     userActions.fetchUsers();
-  }
+  };
 }
 
 export function editPost({ dispatch }) {
