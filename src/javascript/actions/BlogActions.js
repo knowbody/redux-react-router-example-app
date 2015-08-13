@@ -29,7 +29,7 @@ export function createPost(post) {
 
     const response = await create(`${urls.api}/post`, post);
 
-    if (response.status === 200) {
+    if (response.status === 201) {
       post = await response.json();
 
       dispatch({
