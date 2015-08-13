@@ -25,7 +25,7 @@ class Draft extends Component {
 
     isEdit
         ? actions.updatePost(payload)
-        : actions.addPost(payload);
+        : actions.createPost(payload);
 
     router.transitionTo('/');
   }
