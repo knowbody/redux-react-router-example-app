@@ -10,7 +10,7 @@ export default function blogposts(state = [], action = {}) {
   const { type, payload } = action;
 
   switch (type) {
-  case types.FETCH_POSTS:
+  case types.FETCH_POSTS_SUCCESS:
     return [...payload];
 
   case types.CREATE_POST_SUCCESS:

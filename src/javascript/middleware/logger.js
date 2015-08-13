@@ -5,15 +5,10 @@
  */
 export default function logger({ getState }) {
   return (next) => (action) => {
-    console.log('Dispatching: ', action);// eslint-disable-line
+    console.log('dispatching', action);// eslint-disable-line
+    const result = next(action);
 
-    // Call the next dispatch method in the middleware chain.
-    const returnValue = next(action);
-
-    console.log('state after dispatch', getState());// eslint-disable-line
-
-    // This will likely be the action itself, unless
-    // a middleware further in chain changed it.
-    return returnValue;
+    console.log('next state', getState());// eslint-disable-line
+    return result;
   };
 }

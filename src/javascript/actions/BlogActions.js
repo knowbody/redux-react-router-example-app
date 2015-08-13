@@ -1,17 +1,14 @@
-import * as urls from '../config/urls';
 import * as types from './../constants/ActionTypes';
-import {read, create, update, destroy} from './utils/fetch';
 
 export function fetchPosts(start = 0, limit = 10) {
   return async (dispatch) => {
-    const response = await read(
-        `${urls.api}/post?_start=${start}&_limit=${limit}`
-    );
-    const posts = await response.json();
+    const { FETCH_POSTS, FETCH_POSTS_SUCCESS, FETCH_POSTS_FAILURE } = types;
 
     dispatch({
-      type: types.FETCH_POSTS,
-      payload: posts
+      type: [FETCH_POSTS, FETCH_POSTS_SUCCESS, FETCH_POSTS_FAILURE],
+      meta: {
+        fetch: [`/post?_start=${start}&_limit=${limit}`, {method: 'get'}]
+      }
     });
   };
 }
@@ -19,55 +16,45 @@ export function fetchPosts(start = 0, limit = 10) {
 export function createPost(post) {
   return async (dispatch, getState) => {
     const { auth } = getState();
+    const { CREATE_POST, CREATE_POST_SUCCESS, CREATE_POST_FAILURE } = types;
 
     post.user = auth.user.id;
 
     dispatch({
-      type: types.CREATE_POST,
-      payload: post
+      type: [CREATE_POST, CREATE_POST_SUCCESS, CREATE_POST_FAILURE],
+      payload: post,
+      meta: {
+        fetch: ['/post', {method: 'post', body: JSON.stringify(post)}]
+      }
     });
+  };
+}
 
-    const response = await create(`${urls.api}/post`, post);
+export function readPost(id) {
+  return async (dispatch) => {
+    const { READ_POST, READ_POST_SUCCESS, READ_POST_FAILURE } = types;
 
-    if (response.status === 201) {
-      post = await response.json();
-
-      dispatch({
-        type: types.CREATE_POST_SUCCESS,
-        payload: post
-      });
-    } else {
-      dispatch({
-        type: types.CREATE_POST_FAILURE,
-        payload: post
-      });
-    }
+    dispatch({
+      type: [READ_POST, READ_POST_SUCCESS, READ_POST_FAILURE],
+      meta: {
+        fetch: [`/post/${id}`, {method: 'get'}]
+      }
+    });
   };
 }
 
 export function updatePost(post) {
   return async (dispatch) => {
+    const { UPDATE_POST, UPDATE_POST_SUCCESS, UPDATE_POST_FAILURE } = types;
+
     dispatch({
-      type: types.UPDATE_POST,
-      payload: post
+      type: [UPDATE_POST, UPDATE_POST_SUCCESS, UPDATE_POST_FAILURE],
+      payload: post,
+      meta: {
+        fetch: [`/post/${post.id}`, {method: 'put', body: JSON.stringify(post)}]
+      }
     });
-
-    const response = await update(`${urls.api}/post/${post.id}`, post);
-
-    if (response.status === 200) {
-      post = await response.json();
-
-      dispatch({
-        type: types.UPDATE_POST_SUCCESS,
-        payload: post
-      });
-    } else {
-      dispatch({
-        type: types.UPDATE_POST_FAILURE,
-        payload: post
-      });
-    }
-  }
+  };
 }
 
 /**
@@ -77,24 +64,15 @@ export function updatePost(post) {
  */
 export function removePost(post) {
   return async (dispatch) => {
+    const { REMOVE_POST, REMOVE_POST_SUCCESS, REMOVE_POST_FAILURE } = types;
+
     dispatch({
-      type: types.REMOVE_POST,
-      payload: post
+      type: [REMOVE_POST, REMOVE_POST_SUCCESS, REMOVE_POST_FAILURE],
+      payload: post,
+      meta: {
+        fetch: [`/post/${post.id}`, {method: 'delete'}]
+      }
     });
-
-    const { status } = await destroy(`${urls.api}/post/${post.id}`);
-
-    if (status === 200) {
-      dispatch({
-        type: types.REMOVE_POST_SUCCESS,
-        payload: post
-      });
-    } else {
-      dispatch({
-        type: types.REMOVE_POST_FAILURE,
-        payload: post
-      });
-    }
   };
 }
 /**

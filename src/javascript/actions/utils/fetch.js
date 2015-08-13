@@ -1,3 +1,12 @@
+export const defaultParams = {
+  mode: 'cors',
+  credentials: 'include',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json; charset=utf-8'
+  }
+};
+
 /**
  * HTTP GET
  * @param  {string} url
@@ -5,13 +14,8 @@
  */
 export function read(url) {
   return fetch(url, {
-    method: 'get',
-    mode: 'cors',
-    credentials: 'include',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json; charset=utf-8'
-    }
+    ...defaultParams,
+    method: 'get'
   });
 }
 
@@ -23,13 +27,8 @@ export function read(url) {
  */
 export function create(url, body = {}) {
   return fetch(url, {
+    ...defaultParams,
     method: 'post',
-    mode: 'cors',
-    credentials: 'include',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json'
-    },
     body: JSON.stringify(body)
   });
 }
@@ -42,13 +41,8 @@ export function create(url, body = {}) {
  */
 export function update(url, body = {}) {
   return fetch(url, {
+    ...defaultParams,
     method: 'put',
-    mode: 'cors',
-    credentials: 'include',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json'
-    },
     body: JSON.stringify(body)
   });
 }
@@ -61,13 +55,8 @@ export function update(url, body = {}) {
  */
 export function destroy(url) {
   return fetch(url, {
-    method: 'delete',
-    mode: 'cors',
-    credentials: 'include',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json'
-    }
+    ...defaultParams,
+    method: 'delete'
   });
 }
 
