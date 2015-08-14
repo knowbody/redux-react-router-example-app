@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import * as reducers from './reducers';
-import middleware from './config/middleware';
+import middleware from './middleware';
 
 const reducer = combineReducers(reducers);
 

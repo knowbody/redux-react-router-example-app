@@ -16,6 +16,6 @@ export function editPost({ dispatch }) {
   const actions = bindActionCreators(BlogActions, dispatch);
 
   return ({ params }) => {
-    actions.editPost(parseInt(params.id, 10));
+    actions.setDraft(parseInt(params.id, 10));
   };
 }

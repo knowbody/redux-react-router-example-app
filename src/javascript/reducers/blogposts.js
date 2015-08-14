@@ -10,10 +10,10 @@ export default function blogposts(state = [], action = {}) {
   const { type, payload } = action;
 
   switch (type) {
-  case types.FETCH_POSTS:
+  case types.FETCH_POSTS_SUCCESS:
     return [...payload];
 
-  case types.ADD_POST:
+  case types.CREATE_POST_SUCCESS:
     return [{
       id: (state.length === 0)
           ? 1
@@ -25,7 +25,7 @@ export default function blogposts(state = [], action = {}) {
       user: payload.user
     }, ...state];
 
-  case types.UPDATE_POST:
+  case types.UPDATE_POST_SUCCESS:
     const index = indexOfObjectById(state, payload);
     const oldPost = state[index];
     const newState = [...state];
@@ -33,7 +33,7 @@ export default function blogposts(state = [], action = {}) {
 
     return newState;
 
-  case types.REMOVE_POST:
+  case types.REMOVE_POST_SUCCESS:
     return state.filter(blogpost =>
         blogpost.id !== payload.id
     );
