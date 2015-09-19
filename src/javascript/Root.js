@@ -4,6 +4,8 @@ import { Provider } from 'react-redux';
 import { store } from './redux';
 import withMaterialUI from './decorators/withMaterialUI';
 import * as hooks from './hooks';
+// Redux DevTools
+import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
 
 import Blog from './views/Blog';
 import Draft from './views/Draft';
@@ -21,17 +23,22 @@ class Root extends Component {
     const { history } = this.props;
 
     return (
-        <Provider store={store}>
-          {() =>
-              <Router history={history}>
-                <Route path='/' component={Blog}/>
-                <Route path='/post/:id/edit' name='editPost' component={Draft}
-                       onEnter={hooks.editPost(store)}/>
-                <Route path='/post/new' component={Draft}/>
-                <Route path='/login' component={Login}/>
-              </Router>
-          }
-        </Provider>
+        <div>
+          <Provider store={store}>
+            {() =>
+                <Router history={history}>
+                  <Route path='/' component={Blog}/>
+                  <Route path='/post/:id/edit' name='editPost' component={Draft}
+                         onEnter={hooks.editPost(store)}/>
+                  <Route path='/post/new' component={Draft}/>
+                  <Route path='/login' component={Login}/>
+                </Router>
+            }
+          </Provider>
+          <DebugPanel top right bottom>
+            <DevTools store={store} monitor={LogMonitor} />
+          </DebugPanel>
+        </div>
     );
   }
 }

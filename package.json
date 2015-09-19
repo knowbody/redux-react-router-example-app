@@ -54,6 +54,7 @@
     "node-libs-browser": "^0.5.2",
     "raw-loader": "^0.5.1",
     "react-hot-loader": "^1.2.7",
+    "redux-devtools": "^2.1.2",
     "style-loader": "^0.12.3",
     "todomvc-app-css": "^2.0.1",
     "url-loader": "^0.5.6",

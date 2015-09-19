@@ -16,11 +16,16 @@ module.exports = {
     extensions: [ '', '.js' ]
   },
   plugins: [
+    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
         warnings: false
       }
+    }),
+    new webpack.DefinePlugin({
+      __DEVELOPMENT__: false,
+      __DEVTOOLS__: false
     })
   ],
   module: {
