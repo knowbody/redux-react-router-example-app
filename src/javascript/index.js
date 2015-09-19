@@ -10,11 +10,10 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 */
 injectTapEventPlugin();
 
-import BrowserHistory from 'react-router/lib/BrowserHistory';
-import HashHistory from 'react-router/lib/HashHistory';
+import createBrowserHistory from 'history/lib/createBrowserHistory';
+import createHashHistory from 'history/lib/createHashHistory';
 import Root from './Root';
 
-const history = process.env.NODE_ENV === 'production' ?
-  new HashHistory() : new BrowserHistory();
+const history = process.env.NODE_ENV === 'production' ? createHashHistory() : createBrowserHistory();
 
 React.render(<Root history={history} />, document.getElementById('root'));
