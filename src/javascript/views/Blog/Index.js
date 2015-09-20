@@ -5,7 +5,7 @@ import AppBar from '../../containers/AppBar';
 import { FloatingActionButton } from 'material-ui';
 import ContentAdd from 'material-ui/lib/svg-icons/content/add';
 import Post from './Post';
-import * as BlogActions from '../../actions/BlogActions';
+import * as BlogActions from '../../redux/modules/blogposts';
 
 class BlogApp extends Component {
   static propTypes = {

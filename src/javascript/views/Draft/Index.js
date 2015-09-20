@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import AppBar from '../../containers/AppBar';
 import { Paper, TextField, RaisedButton } from 'material-ui';
-import * as BlogActions from '../../actions/BlogActions';
+import * as BlogActions from '../../redux/modules/blogposts';
 
 class Draft extends Component {
   static propTypes = {
