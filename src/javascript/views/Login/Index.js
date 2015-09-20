@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Paper, TextField, RaisedButton } from 'material-ui';
 import ActionAccountCicle
 from 'material-ui/lib/svg-icons/action/account-circle';
-import * as AuthActions from '../../actions/AuthActions';
+import * as AuthActions from '../../redux/modules/auth';
 
 class Login extends Component {
   static propTypes = {

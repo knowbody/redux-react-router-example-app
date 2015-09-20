@@ -1,9 +1,8 @@
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
-import * as reducers from './reducers';
 import middleware from './middleware';
 import { devTools, persistState } from 'redux-devtools'
 
-const reducer = combineReducers(reducers);
+const reducer = require('./modules/reducer');
 
 let finalCreateStore;
 if(__DEVELOPMENT__ && __DEVTOOLS__){
@@ -19,6 +18,5 @@ if(__DEVELOPMENT__ && __DEVTOOLS__){
    applyMiddleware.apply(this, middleware)
  )(createStore);
 }
-
 
 export const store = finalCreateStore(reducer);

@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
-import * as UserActions from './actions/UserActions';
-import * as BlogActions from './actions/BlogActions';
+import * as UserActions from './redux/modules/users';
+import * as BlogActions from './redux/modules/blogposts';
 
 export function bootstrap({ dispatch }) {
   const userActions = bindActionCreators(UserActions, dispatch);

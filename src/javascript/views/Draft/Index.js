@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import AppBar from '../../containers/AppBar';
 import { Paper, TextField, RaisedButton } from 'material-ui';
-import * as BlogActions from '../../actions/BlogActions';
+import * as BlogActions from '../../redux/modules/blogposts';
 
 class Draft extends Component {
   static propTypes = {
@@ -13,21 +13,21 @@ class Draft extends Component {
   }
 
   static contextTypes = {
-    router: PropTypes.object.isRequired
+    history: PropTypes.object.isRequired
   }
 
   onSubmit(actions, payload) {
     event.preventDefault();
 
-    const { router } = this.context;
+    const { history } = this.context;
     const { params } = this.props;
-    const isEdit = router.isActive(`/post/${params.id}/edit`);
+    const isEdit = history.isActive(`/post/${params.id}/edit`);
 
     isEdit
         ? actions.updatePost(payload)
         : actions.createPost(payload);
 
-    router.transitionTo('/');
+    history.pushState(null, '/');
   }
 
   getStyles() {
@@ -49,13 +49,13 @@ class Draft extends Component {
   }
 
   render() {
-    const { router } = this.context;
+    const { history } = this.context;
     const { draft, dispatch, params } = this.props;
     const actions = bindActionCreators(BlogActions, dispatch);
     const { updateDraft } = actions;
     const styles = this.getStyles();
 
-    const isEdit = router.isActive(`/post/${params.id}/edit`);
+    const isEdit = history.isActive(`/post/${params.id}/edit`);
 
     const form = (
         <form style={styles.form}

@@ -10,7 +10,7 @@ import SocialGithub from '../../images/GitHub-Mark-Light-120px-plus.png';
 
 export default class Header extends Component {
   static contextTypes = {
-    router: PropTypes.object.isRequired
+    history: PropTypes.object.isRequired
   }
 
   getStyles() {
@@ -32,7 +32,7 @@ export default class Header extends Component {
   }
 
   render() {
-    const { router } = this.context;
+    const { history } = this.context;
     const styles = this.getStyles();
 
     const iconElementRight = (
@@ -49,7 +49,7 @@ export default class Header extends Component {
                       </IconButton>
                     }>
             <MenuItem leftIcon={<ActionAccountCicle />} primaryText='Login'
-                      onTouchTap={() => router.transitionTo('login')} />
+                      onTouchTap={() => history.pushState(null, '/login')} />
           </IconMenu>
         </div>
     );

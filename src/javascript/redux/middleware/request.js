@@ -1,5 +1,5 @@
-import * as urls from '../config/urls';
-import { defaultParams as defaultFetchParams } from '../actions/utils/fetch';
+import * as urls from '../../config/urls';
+import { defaultParams as defaultFetchParams } from '../modules/utils/fetch';
 
 export default function request({ dispatch }) {
   return (next) => async (action) => {

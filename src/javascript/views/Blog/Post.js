@@ -25,7 +25,7 @@ export default class Blogpost extends Component {
   }
 
   static contextTypes = {
-    router: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
     muiTheme: PropTypes.object
   }
 
@@ -64,7 +64,7 @@ export default class Blogpost extends Component {
   }
 
   render() {
-    const { router } = this.context;
+    const { history } = this.context;
     const { actions, post, user } = this.props;
     const styles = this.getStyles();
 
@@ -92,7 +92,7 @@ export default class Blogpost extends Component {
                       }>
               <MenuItem leftIcon={<EditorModeEdit />} primaryText='Edit'
                         onTouchTap={() => {
-                          router.transitionTo(`/post/${post.id}/edit`);
+                          history.pushState(null, `/post/${post.id}/edit`);
                         }}/>
               <MenuItem leftIcon={<ActionDelete />} primaryText='Remove'
                         onTouchTap={actions.removePost.bind(null, post)}/>
