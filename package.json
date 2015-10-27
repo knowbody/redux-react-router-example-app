@@ -24,14 +24,16 @@
   "dependencies": {
     "classnames": "^2.1.2",
     "express": "^4.13.3",
-    "material-ui": "^0.10.2",
+    "history": "^1.9.1",
+    "material-ui": "^0.11.1",
     "normalize.css": "^3.0.3",
     "react": "^0.13.3",
-    "react-redux": "^0.6.0",
-    "react-router": "1.0.0-beta3",
+    "react-redux": "^2.1.2",
+    "react-router": "^1.0.0-rc1",
     "react-tap-event-plugin": "^0.1.7",
-    "redux": "^1.0.0-rc",
-    "redux-thunk": "^0.1.0"
+    "redux": "^3.0.0",
+    "redux-form": "^1.6.5",
+    "redux-thunk": "^1.0.0"
   },
   "devDependencies": {
     "babel": "^5.8.12",
@@ -53,6 +55,7 @@
     "node-libs-browser": "^0.5.2",
     "raw-loader": "^0.5.1",
     "react-hot-loader": "^1.2.7",
+    "redux-devtools": "^2.1.2",
     "style-loader": "^0.12.3",
     "todomvc-app-css": "^2.0.1",
     "url-loader": "^0.5.6",

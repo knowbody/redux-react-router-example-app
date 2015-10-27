@@ -5,7 +5,7 @@ import AppBar from '../../containers/AppBar';
 import { FloatingActionButton } from 'material-ui';
 import ContentAdd from 'material-ui/lib/svg-icons/content/add';
 import Post from './Post';
-import * as BlogActions from '../../actions/BlogActions';
+import * as BlogActions from '../../redux/modules/blogposts';
 
 class BlogApp extends Component {
   static propTypes = {
@@ -15,7 +15,7 @@ class BlogApp extends Component {
   }
 
   static contextTypes = {
-    router: PropTypes.object.isRequired
+    history: PropTypes.object.isRequired
   }
 
   getStyles() {
@@ -30,7 +30,7 @@ class BlogApp extends Component {
   }
 
   render() {
-    const { router } = this.context;
+    const { history } = this.context;
     const { blogposts, users, dispatch } = this.props;
     const actions = bindActionCreators(BlogActions, dispatch);
     const styles = this.getStyles();
@@ -45,7 +45,7 @@ class BlogApp extends Component {
           )}
           <FloatingActionButton style={styles.addContent}
                                 onTouchTap={() => {
-                                  router.transitionTo('/post/new');
+                                  history.pushState(null, '/post/new');
                                 }}>
             <ContentAdd />
           </FloatingActionButton>
