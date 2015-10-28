@@ -23,9 +23,7 @@ class Draft extends Component {
     const { params } = this.props;
     const isEdit = history.isActive(`/post/${params.id}/edit`);
 
-    isEdit
-        ? actions.updatePost(payload)
-        : actions.createPost(payload);
+    isEdit ? actions.updatePost(payload) : actions.createPost(payload);
 
     history.pushState(null, '/');
   }
@@ -82,11 +80,11 @@ class Draft extends Component {
                      hintText='whats this about...?'
                      floatingLabelText='whats this about...?'
                      value={draft.body}
-                     multiLine={true}/>
+                     multiLine />
           <RaisedButton type='submit'
                         style={styles.submit}
                         label={isEdit ? 'Save' : 'Publish'}
-                        primary={true}/>
+                        primary />
 
           <div style={{ clear: 'both' }}/>
         </form>

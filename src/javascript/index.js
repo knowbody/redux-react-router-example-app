@@ -1,6 +1,9 @@
 import 'babel/polyfill';
 import React from 'react';
+import { render } from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import createHashHistory from 'history/lib/createHashHistory';
+import Root from './Root';
 
 /*
   Needed for onTouchTap
@@ -10,10 +13,4 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 */
 injectTapEventPlugin();
 
-import createBrowserHistory from 'history/lib/createBrowserHistory';
-import createHashHistory from 'history/lib/createHashHistory';
-import Root from './Root';
-
-const history = process.env.NODE_ENV === 'production' ? createHashHistory() : createBrowserHistory();
-
-React.render(<Root history={history} />, document.getElementById('root'));
+render(<Root />, document.getElementById('root'));

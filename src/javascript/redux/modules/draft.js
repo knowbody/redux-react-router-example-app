@@ -1,4 +1,3 @@
-
 const CREATE_POST_SUCCESS = 'draft/CREATE_POST_SUCCESS';
 const UPDATE_POST_SUCCESS = 'draft/UPDATE_POST_SUCCESS';
 
@@ -29,10 +28,10 @@ export default function reducer(state = initialState, action = {}) {
     };
 
   case SET_DRAFT:
-    return {...payload};
+    return { ...payload };
 
   case UPDATE_DRAFT:
-    return {...state, ...payload};
+    return { ...state, ...payload };
 
   default:
     return state;

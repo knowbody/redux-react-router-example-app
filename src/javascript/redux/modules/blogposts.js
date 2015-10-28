@@ -18,8 +18,8 @@ const REMOVE_POST = 'blogposts/REMOVE_POST';
 const REMOVE_POST_SUCCESS = 'blogposts/REMOVE_POST_SUCCESS';
 const REMOVE_POST_FAILURE = 'blogposts/REMOVE_POST_FAILURE';
 
-export const SET_DRAFT = 'blogposts/SET_DRAFT';
-export const UPDATE_DRAFT = 'blogposts/UPDATE_DRAFT';
+export const SET_DRAFT = 'draft/SET_DRAFT';
+export const UPDATE_DRAFT = 'draft/UPDATE_DRAFT';
 
 const initialState = [];
 

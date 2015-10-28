@@ -58,8 +58,8 @@ class Login extends Component {
                        onKeyDown={::this.submit} /><br />
             <RaisedButton style={styles.submit}
                           label='Submit'
-                          primary={true}
-                          onTouchTap={::this.submit} />
+                          onTouchTap={::this.submit}
+                          primary />
           </Paper>
         </div>
     );

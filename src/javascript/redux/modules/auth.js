@@ -1,11 +1,10 @@
-const LOGIN = "auth/LOGIN"
-const LOGIN_SUCCESS = "auth/LOGIN_SUCCESS"
-const LOGIN_FAILURE = "auth/LOGIN_FAILURE"
+const LOGIN = 'auth/LOGIN';
+const LOGIN_SUCCESS = 'auth/LOGIN_SUCCESS';
+const LOGIN_FAILURE = 'auth/LOGIN_FAILURE';
 
-const REGISTER = "auth/REGISTER"
-const REGISTER_SUCCESS = "auth/REGISTER_SUCCESS"
-const REGISTER_FAILURE = "auth/REGISTER_FAILURE"
-
+const REGISTER = 'auth/REGISTER';
+const REGISTER_SUCCESS = 'auth/REGISTER_SUCCESS';
+const REGISTER_FAILURE = 'auth/REGISTER_FAILURE';
 
 const initialState = {
   user: {
@@ -27,7 +26,6 @@ export default function reducer(state = initialState, action = {}) {
     return state;
   }
 }
-
 
 // export function login(username, password) {
 //   return (dispatch, getState) => {
@@ -53,7 +51,7 @@ export default function reducer(state = initialState, action = {}) {
 //         some middleware to debug your code'
 //       });
 //     }, 1000);
-//   }
+//   };
 // }
 
 // export function register(username, email, password) {

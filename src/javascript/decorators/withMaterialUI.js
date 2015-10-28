@@ -1,9 +1,9 @@
-import React, { PropTypes } from 'react'; // eslint-disable-line no-unused-vars
-import mui from 'material-ui';
-import theme from '../config/theme';
+import React, { Component } from 'react';
+import ThemeManager from 'material-ui/lib/styles/theme-manager';
+import LightRawTheme from 'material-ui/lib/styles/raw-themes/light-raw-theme';
 
 export default function withMaterialUI(ComposedComponent) {
-  return class MaterialUI {
+  return class MaterialUI extends Component {
     /*
      For more details: https://github.com/callemall/material-ui#usage
      Pass material-ui theme through child context
@@ -14,16 +14,13 @@ export default function withMaterialUI(ComposedComponent) {
     }
 
     getChildContext() {
-      const ThemeManager = new mui.Styles.ThemeManager();
-      ThemeManager.setTheme(theme);
-
       return {
-        muiTheme: ThemeManager.getCurrentTheme()
+        muiTheme: ThemeManager.getMuiTheme(LightRawTheme)
       };
     }
 
     render() {
-      let { context, ...other } = this.props; // eslint-disable-line no-unused-vars
+      const { context, ...other } = this.props;
       return <ComposedComponent {...other} />;
     }
   };
