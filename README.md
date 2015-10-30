@@ -10,6 +10,9 @@ an insight on how Redux and React Router can be used in the bigger projects than
 
 Feel free to contribute to make it a great start point for others.
 
+#### Redux
+The redux structure follows the [ducks modular redux proposal](https://github.com/erikras/ducks-modular-redux)
+
 ### About
 Example blog app built with React, Redux and React Router.
 
