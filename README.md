@@ -4,6 +4,8 @@ Redux and React Router Example App
 
 **This project is a work in progress.**
 
+![](http://g.recordit.co/8bMQFmKinz.gif)
+
 ### Why
 This project was started, because I found myself and many developers would like to get 
 an insight on how Redux and React Router can be used in the bigger projects than a TODO app.
