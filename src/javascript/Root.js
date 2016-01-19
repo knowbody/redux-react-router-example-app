@@ -6,7 +6,7 @@ import { store } from './redux';
 import withMaterialUI from './decorators/withMaterialUI';
 import * as hooks from './hooks';
 // Redux DevTools
-import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
+import DevTools from './containers/DevTools';
 
 import Blog from './views/Blog';
 import Draft from './views/Draft';
@@ -27,9 +27,7 @@ export default class Root extends Component {
               <Route path='/login' component={Login}/>
             </Router>
           </Provider>
-          <DebugPanel top right bottom>
-            <DevTools store={store} monitor={LogMonitor} />
-          </DebugPanel>
+          <DevTools store={store} />
         </div>
     );
   }
